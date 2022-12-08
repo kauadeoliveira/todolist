@@ -1,4 +1,5 @@
 import Input from "../Input";
+import Description from "./Description";
 import { Backdrop, ModalButtons, ModalContent, ModalHeader, ModalWrapper } from "./style";
 
 export default function Modal() {
@@ -10,7 +11,17 @@ export default function Modal() {
                     <div className="close-icon">x</div>
                 </ModalHeader>
                 <ModalContent>
-                    <Input type="text" placeholder="a"/>
+                    <Input 
+                     type="text"
+                     label="Task title"
+                    />
+
+                    <Input 
+                     type="date"
+                     label="Due date"
+                    />
+
+                    <Description />
                 </ModalContent>
                 <ModalButtons></ModalButtons>
             </ModalWrapper>

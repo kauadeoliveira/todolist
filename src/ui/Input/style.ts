@@ -7,6 +7,7 @@ interface InputIconProps {
 export const InputWrapper = styled.div`
     background-color: white;
     border: 1px solid black;
+    border-radius: 10px;
     width: 70%;
     padding: 2px;
     display: flex;
@@ -26,4 +27,7 @@ export const InputIcon = styled.div<InputIconProps>`
     width: 15px;
     height: 15px;
     cursor: pointer;
+`
+export const InputLabel = styled.span`
+    font-size: .9rem;
 `

@@ -17,21 +17,20 @@ export const ModalWrapper = styled.div`
     top: 50%;
     z-index: 200;
     width: 500px;
-    height: 200px;
-    background-color: wheat;
+    background-color: ${({ theme }) => theme.colors.background};
+    padding: 5px 10px;
+
 `
 
 export const ModalHeader = styled.div`
     display: flex;
     justify-content: space-between;
-    padding: 5px 10px;
     width: 100%;
 `
 
 export const ModalContent = styled.div`
     height: 100%;
     width: 100%;
-    color: white;
 `
 export const ModalButtons = styled.div`
     width: 100%;
