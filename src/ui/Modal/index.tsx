@@ -1,5 +1,11 @@
+import { Backdrop, ModalHeader, ModalWrapper } from "./style";
+
 export default function Modal() {
     return(
-        <h1>Modal</h1>
+        <Backdrop>
+            <ModalWrapper>
+                <ModalHeader></ModalHeader>
+            </ModalWrapper>
+        </Backdrop>
     )
 }
