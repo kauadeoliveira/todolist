@@ -17,9 +17,9 @@ export const ModalWrapper = styled.div`
     top: 50%;
     z-index: 200;
     width: 500px;
-    background-color: ${({ theme }) => theme.colors.background};
-    padding: 5px 10px;
-
+    background-color: ${({ theme }) => theme.palette.background.primary};
+    padding: 12px;
+    border-radius: 10px;
 `
 
 export const ModalHeader = styled.div`
@@ -29,6 +29,9 @@ export const ModalHeader = styled.div`
 `
 
 export const ModalContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     height: 100%;
     width: 100%;
 `

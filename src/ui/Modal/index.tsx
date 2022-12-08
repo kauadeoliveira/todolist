@@ -14,14 +14,18 @@ export default function Modal() {
                     <Input 
                      type="text"
                      label="Task title"
+                     placeholder="Title"
+                     width="70%"
                     />
-
                     <Input 
                      type="date"
                      label="Due date"
+                     width="70%"
                     />
-
-                    <Description />
+                    <Description 
+                     placeholder="Description"
+                     width="70%"
+                    />
                 </ModalContent>
                 <ModalButtons></ModalButtons>
             </ModalWrapper>

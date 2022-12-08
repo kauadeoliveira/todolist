@@ -11,5 +11,6 @@ export const GlobalStyle = createGlobalStyle`
         padding: 1rem;
         font-size: 10px;
         font-family: sans-serif;
+        color: ${({ theme }) => theme.palette.text.primary}
     }
 `

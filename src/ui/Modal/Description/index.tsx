@@ -1,10 +1,19 @@
 import { DescriptionWrapper } from "./style";
 
-export default function Description() {
+interface DescriptionProps {
+    placeholder?: string; 
+    width: string
+}
+
+export default function Description({ placeholder, width }: DescriptionProps) {
     return(
-        <DescriptionWrapper>
+        <DescriptionWrapper width={width}>
             <span>Task description</span>
-            <textarea cols={30} rows={5}></textarea>
+            <textarea 
+            cols={30} 
+            rows={5} 
+            placeholder={placeholder}
+        />
         </DescriptionWrapper>
     )
 }

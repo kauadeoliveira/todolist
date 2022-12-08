@@ -1,18 +1,22 @@
 import styled from "styled-components";
 
-interface InputIconProps {
-    src?: string
+interface InputProps {
+    width: string
+    src?: string;
 }
 
-export const InputWrapper = styled.div`
-    background-color: white;
+type InputIconProps = Pick<InputProps, "src">
+
+export const InputWrapper = styled.div<InputProps>`
+    background-color: ${({ theme }) => theme.palette.background.secondary};
+    width: ${({ width }) => width};
     border: 1px solid black;
-    border-radius: 10px;
-    width: 70%;
-    padding: 2px;
+    border-radius: 5px;
+    padding: 8px;
     display: flex;
     gap: 5px;
     input{
+        color: ${({ theme }) => theme.palette.text.primary};
         width: 100%;
         outline: none;
         border: none;
@@ -29,5 +33,7 @@ export const InputIcon = styled.div<InputIconProps>`
     cursor: pointer;
 `
 export const InputLabel = styled.span`
-    font-size: .9rem;
+    font-weight: bold;
+    font-size: .8rem;
+    margin-left: 5px;
 `

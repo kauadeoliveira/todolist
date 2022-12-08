@@ -9,22 +9,23 @@ interface InputProps {
     placeholder?: string
     label: string
     icon?: string
+    width: string
 }
 
-export default function Input({ type, value, placeholder, label, icon }: InputProps ) {
+export default function Input({ type, value, placeholder, label, icon, width }: InputProps ) {
     const handleValue = (e: React.ChangeEvent<HTMLInputElement>): void => console.log(typeof e.target.value)
     return(
-        <>
+        <div>
             <InputLabel>{label}</InputLabel>
-            <InputWrapper>
+            <InputWrapper width={width}>
                 <input
-                 type={type}
-                 value={value}
-                 placeholder={placeholder}
-                 onChange={handleValue}
+                    type={type}
+                    value={value}
+                    placeholder={placeholder}
+                    onChange={handleValue}
                 />
                 <InputIcon src={icon} />
             </InputWrapper>
-        </>
+        </div>
     )
 }
