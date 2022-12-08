@@ -18,11 +18,22 @@ export const ModalWrapper = styled.div`
     z-index: 200;
     width: 500px;
     height: 200px;
-    background-color: red;
+    background-color: wheat;
 `
 
 export const ModalHeader = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
     width: 100%;
-    height: 100px;
-    background-color: blue;
+`
+
+export const ModalContent = styled.div`
+    height: 100%;
+    width: 100%;
+    color: white;
+`
+export const ModalButtons = styled.div`
+    width: 100%;
+    height: 50px;
 `
