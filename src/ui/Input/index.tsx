@@ -1,31 +1,28 @@
-import React from "react"
-import { InputIcon, InputLabel, InputWrapper } from "./style"
-
-import searchIcon from "../../assets/images/search-icon.png"
+import React, { useState } from "react"
+import { InputLabel, InputWrapper, MyInput } from "./style"
+import calendarIcon from "../../assets/images/calendar-icon.png"
+import calendarPurpleIcon from "../../assets/images/calendar-purple-icon.png"
 
 interface InputProps {
     type: string
     value?: string
     placeholder?: string
     label: string
-    icon?: string
     width: string
 }
 
-export default function Input({ type, value, placeholder, label, icon, width }: InputProps ) {
-    const handleValue = (e: React.ChangeEvent<HTMLInputElement>): void => console.log(typeof e.target.value)
+
+export default function Input({ type, value, placeholder, label, width }: InputProps ) {
     return(
-        <div>
+        <InputWrapper width={width}>
             <InputLabel>{label}</InputLabel>
-            <InputWrapper width={width}>
-                <input
-                    type={type}
-                    value={value}
-                    placeholder={placeholder}
-                    onChange={handleValue}
-                />
-                <InputIcon src={icon} />
-            </InputWrapper>
-        </div>
+            <MyInput
+             width={width}
+             type={type}
+             value={value}
+             placeholder={placeholder}
+             icon={[calendarIcon, calendarPurpleIcon]}
+            />
+        </InputWrapper>
     )
 }

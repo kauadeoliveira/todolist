@@ -14,7 +14,16 @@ declare module 'styled-components' {
             },
             text: {
                 primary: string;
+                disabled: string
             }
         },
+        dimensions: {
+            borderRadius: {
+                inputs: string
+            },
+            margin: {
+                marginLabel: string
+            }
+        }
     }
 }

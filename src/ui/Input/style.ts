@@ -1,39 +1,41 @@
-import styled from "styled-components";
+import styled, { DefaultTheme, StyledComponent } from "styled-components";
 
 interface InputProps {
     width: string
-    src?: string;
+    icon: string[]
 }
 
-type InputIconProps = Pick<InputProps, "src">
-
-export const InputWrapper = styled.div<InputProps>`
-    background-color: ${({ theme }) => theme.palette.background.secondary};
+export const InputWrapper= styled.div<Pick<InputProps, "width">>`
     width: ${({ width }) => width};
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 8px;
     display: flex;
-    gap: 5px;
-    input{
-        color: ${({ theme }) => theme.palette.text.primary};
-        width: 100%;
-        outline: none;
-        border: none;
-        background: none;
-    }
+    flex-direction: column;
 `
-export const InputIcon = styled.div<InputIconProps>`
-    display: ${({ src }) => src ? 'block' : 'none'};
-    background-image: url(${({ src }) => src});
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 15px;
-    height: 15px;
-    cursor: pointer;
+export const MyInput = styled.input<InputProps>`
+    width: 100%;
+    background-color: ${({ theme }) => theme.palette.background.secondary};
+    border: 1px solid ${({ theme }) => theme.palette.background.secondary};
+    color: #fff;
+    outline: none;
+    padding: 10px 5px;
+    border-radius: ${({ theme }) => theme.dimensions.borderRadius.inputs};
+    font-family: sans-serif;
+
+    &::-webkit-calendar-picker-indicator{
+        cursor: pointer;
+        background-image: url(${({ icon }) => icon[0]});
+    }
+
+    &:focus{
+        border-color: ${({ theme }) => theme.palette.colors.primary};
+
+        &::-webkit-calendar-picker-indicator{
+        background-image: url(${({ icon }) => icon[1]});
+    }
+    }
+    
 `
 export const InputLabel = styled.span`
-    font-weight: bold;
-    font-size: .8rem;
-    margin-left: 5px;
+    color: ${({ theme }) => theme.palette.text.disabled};
+    font-size: 1.1em;
+    margin: ${({ theme }) => theme.dimensions.margin.marginLabel}
 `

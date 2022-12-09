@@ -1,6 +1,6 @@
 import Input from "../Input";
 import Description from "./Description";
-import { Backdrop, ModalButtons, ModalContent, ModalHeader, ModalWrapper } from "./style";
+import { Backdrop, ModalButton, ModalContent, ModalHeader, ModalWrapper } from "./style";
 
 export default function Modal() {
     return(
@@ -15,19 +15,19 @@ export default function Modal() {
                      type="text"
                      label="Task title"
                      placeholder="Title"
-                     width="70%"
+                     width="100%"
                     />
                     <Input 
                      type="date"
                      label="Due date"
-                     width="70%"
+                     width="100%"
                     />
                     <Description 
                      placeholder="Description"
-                     width="70%"
+                     width="100%"
                     />
                 </ModalContent>
-                <ModalButtons></ModalButtons>
+                <ModalButton>Create Task</ModalButton>
             </ModalWrapper>
         </Backdrop>
     )
