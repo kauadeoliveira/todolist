@@ -1,14 +1,27 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Input from "../Input";
 import Description from "./Description";
 import { Backdrop, ModalButton, ModalContent, ModalHeader, ModalWrapper } from "./style";
+import { store } from "../../store/store";
+import { modalSlice } from "../../store/modalSlice";
+
+type State = ReturnType<typeof store.getState>
 
 export default function Modal() {
+    const dispatch = useDispatch();
+    const { openModal } = useSelector((state: State) => state.modal);
+    const { open } = modalSlice.actions
+
+    const handleModal = () => dispatch(open()) 
+
+
     return(
-        <Backdrop>
+        <Backdrop close={openModal}>
             <ModalWrapper>
                 <ModalHeader>
                     <span>New Task</span>
-                    <div className="close-icon">x</div>
+                    <div className="close-icon" onClick={handleModal}>x</div>
                 </ModalHeader>
                 <ModalContent>
                     <Input 

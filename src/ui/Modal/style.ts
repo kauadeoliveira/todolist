@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-export const Backdrop = styled.div`
+interface BackdropProps {
+    close: boolean
+}
+
+export const Backdrop = styled.div<BackdropProps>`
+    display: ${({ close }) => close ? 'block' : 'none'};
     position: fixed;
     top: 0;
     left: 0;
@@ -35,6 +40,10 @@ export const ModalHeader = styled.div`
 
     span{
         margin: auto;
+    }
+
+    div{
+        cursor: pointer;
     }
 `
 
