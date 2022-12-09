@@ -14,26 +14,28 @@ export const ModalWrapper = styled.div`
     background-color: ${({ theme }) => theme.palette.background.primary};
     display: flex;
     justify-content: center;
-
     flex-wrap: wrap;
     gap: 15px;
     position: fixed;
     left: 50%;
-    transform: translate(-50%, -50%);
     top: 50%;
+    transform: translate(-50%, -50%);
     z-index: 200;
     width: 500px;
-    padding: 12px;
     border-radius: 10px;
+    padding: 12px;
 `
 
 export const ModalHeader = styled.div`
     display: flex;
-    justify-content: space-between;
     width: 100%;
     font-size: 1.8em;
     color: #fff;
     font-weight: bold;
+
+    span{
+        margin: auto;
+    }
 `
 
 export const ModalContent = styled.div`
@@ -47,8 +49,15 @@ export const ModalContent = styled.div`
 export const ModalButton = styled.div`
     border-radius: ${({ theme }) => theme.dimensions.borderRadius.inputs};
     background-color: ${({ theme }) => theme.palette.colors.primary};
-    font-size: 2em;
+    font-size: 1.8em;
+    font-weight: bold;
     padding: 10px;
     width: 100%;
     text-align: center;
+    transition: background-color 0.2s ease 0s, color 0.2s ease 0s;
+    cursor: pointer;
+
+    &:hover{
+        background-color: #a883ff;
+    }
 `
