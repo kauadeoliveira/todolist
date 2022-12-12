@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Input from "../Input";
 import Description from "./Description";
-import { Backdrop, ModalButton, ModalContent, ModalHeader, ModalWrapper } from "./style";
+import { Backdrop, ModalButton, ModalContent, ModalHeader, ModalWrapper, TaskPriority } from "./style";
 import { store } from "../../store/store";
 import { modalSlice } from "../../store/modalSlice";
 
@@ -39,6 +39,16 @@ export default function Modal() {
                      placeholder="Description"
                      width="100%"
                     />
+                    <TaskPriority>
+                        <input type="radio" name="task_priority" id="high" />
+                        <label htmlFor="high" className="high">High</label>
+
+                        <input type="radio" name="task_priority" id="middle" />
+                        <label htmlFor="middle" className="middle">Middle</label>
+
+                        <input type="radio" name="task_priority" id="low" />
+                        <label htmlFor="low" className="low">Low</label>
+                    </TaskPriority>
                 </ModalContent>
                 <ModalButton>Create Task</ModalButton>
             </ModalWrapper>

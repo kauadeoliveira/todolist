@@ -7,6 +7,12 @@ declare module 'styled-components' {
             colors: {
                 primary: string;
                 secondary: string;
+
+                priority: {
+                    high: string,
+                    middle: string,
+                    low: string
+                }
             },
             background: {
                 primary: string;

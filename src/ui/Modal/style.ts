@@ -55,6 +55,52 @@ export const ModalContent = styled.div`
     height: 100%;
     width: 100%;
 `
+
+export const TaskPriority = styled.div`
+    display: flex;
+    gap: 10px;
+
+    input{
+        display: none;
+    }
+    label{
+        border-radius: ${({ theme }) => theme.dimensions.borderRadius.inputs};
+        display: block;
+        cursor: pointer;
+        padding: 5px;
+        width: 80px;
+        text-align: center;
+        font-size: 1.4em;
+        font-weight: bold;
+        transition: all .4s;
+    }
+    
+    .high{
+        background-color: ${({ theme }) => theme.palette.colors.priority.high};
+
+        &:hover{
+            background-color: #e57373;
+        }
+    }
+    
+    .middle{
+        background-color: ${({ theme }) => theme.palette.colors.priority.middle};
+
+        &:hover{
+            background-color: #81c784;
+        }
+    }
+
+    .low{
+        background-color: ${({ theme }) => theme.palette.colors.priority.low};
+
+        &:hover{
+            background-color: #ffb74d;
+        }
+    }
+
+`
+
 export const ModalButton = styled.div`
     border-radius: ${({ theme }) => theme.dimensions.borderRadius.inputs};
     background-color: ${({ theme }) => theme.palette.colors.primary};
@@ -70,3 +116,4 @@ export const ModalButton = styled.div`
         background-color: #a883ff;
     }
 `
+

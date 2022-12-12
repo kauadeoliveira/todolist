@@ -5,6 +5,12 @@ export default {
         colors: {
             primary: '#8257e6',
             secondary: '#352833',
+
+            priority: {
+                high: '#f44336',
+                middle: '#66bb6a',
+                low: '#ffa726'
+            }
         },
         background: {
             primary: '#202024',
