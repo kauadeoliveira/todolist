@@ -1,18 +1,23 @@
+import React from "react";
 import { DescriptionWrapper } from "./style";
 
-interface DescriptionProps {
-    placeholder?: string; 
-    width: string
+interface TextareaProps {
+    placeholder: string;
+    label: string;
+    width: string;
+    onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
 }
 
-export default function Description({ placeholder, width }: DescriptionProps) {
+export default function Description({ placeholder, label, width, onChange }: TextareaProps) {
     return(
         <DescriptionWrapper width={width}>
-            <span>Task description</span>
+            <span>{label}n</span>
             <textarea 
-            cols={30} 
-            rows={5} 
+            cols={3} 
+            rows={1} 
+            maxLength={60}
             placeholder={placeholder}
+            onChange={onChange}
         />
         </DescriptionWrapper>
     )
