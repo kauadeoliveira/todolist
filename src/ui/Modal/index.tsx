@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Input from "../Input";
 import { Backdrop, ModalButton, ModalContent, ModalHeader, ModalWrapper, TaskPriority } from "./style";
@@ -10,13 +10,29 @@ type State = ReturnType<typeof store.getState>
 
 export default function Modal() {
     const dispatch = useDispatch();
+    
+    // Refs
+    const titleRef = React.createRef<HTMLInputElement>();
+    const dateRef = React.createRef<HTMLInputElement>();
+    const descriptionRef = React.createRef<HTMLInputElement>();
+    
+    // Inputs
+    const [titleErrorMsg, setTitleErrorMsg] = useState<Boolean>();
+    const handleResetInputValues = () => {
+        if(titleRef.current?.value != undefined && dateRef.current?.value != undefined && descriptionRef.current?.value != undefined){
+            titleRef.current.value = '';
+            dateRef.current.value = '';
+            descriptionRef.current.value = '';
+        }
+    }
 
     // Open/Close Modal
     const { openModal } = useSelector((state: State) => state.modal);
     const { open } = modalSlice.actions;
     const handleModal = () => {
+        handleResetInputValues()
         dispatch(open())
-        setErrorTitle(false)
+        setTitleErrorMsg(false)
     };
 
 
@@ -26,23 +42,20 @@ export default function Modal() {
     const [description, setDescription] = useState<String>();
     const [priority, setPriority] = useState<String>();
 
-    const [errorTitle, setErrorTitle] = useState<Boolean>();
-
     const { allTasks } = useSelector((state: State) => state.tasks);
     const { addTask } = tasksSlice.actions
 
     const handleTitle = (e:React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value);
     const handleDate = (e: React.ChangeEvent<HTMLInputElement>) => setDate(e.target.value);
     const handleDescription = (e: React.ChangeEvent<HTMLInputElement>) => setDescription(e.target.value);
-    const handlePriority = (e: React.ChangeEvent<HTMLInputElement>) => setPriority(e.target.value)
+    const handlePriority = (e: React.ChangeEvent<HTMLInputElement>) => setPriority(e.target.value);
     
     const createTask = () => {
         if(title){
-            dispatch(addTask({title, date, description, priority}))
-            handleModal()
-        }
-        else{
-            setErrorTitle(true)
+            dispatch(addTask({title, date, description, priority}));
+            handleModal();
+        }else{
+            setTitleErrorMsg(true);
         }
     }
 
@@ -62,13 +75,15 @@ export default function Modal() {
                      placeholder="Title"
                      width="100%"
                      onChange={handleTitle}
-                     errorMsg={errorTitle ? 'Title task is required.' : ''}
+                     errorMsg={titleErrorMsg ? 'Title task is required.' : ''}
+                     ref={titleRef}
                     />
                     <Input 
                      type="date"
                      label="Due date"
                      width="100%"
                      onChange={handleDate}
+                     ref={dateRef}
                     />
                     <Input 
                      type="text"
@@ -77,6 +92,7 @@ export default function Modal() {
                      width="100%"
                      maxLength={80}
                      onChange={handleDescription}
+                     ref={descriptionRef}
                     />
                     <TaskPriority>
                         <input type="radio" name="task_priority" id="high" value="high" onChange={handlePriority}/>

@@ -5,7 +5,7 @@ import calendarPurpleIcon from "../../assets/images/calendar-purple-icon.png"
 
 interface InputProps {
     type?: string;
-    value?: string;
+    value?: string
     placeholder?: string;
     label: string;
     width: string;
@@ -15,11 +15,12 @@ interface InputProps {
 }
 
 
-export default function Input({ type, value, placeholder, label, width, maxLength, onChange, errorMsg }: InputProps ) {
+const Input = React.forwardRef<HTMLInputElement, InputProps>(({ type, label, width, errorMsg, maxLength, onChange, placeholder, value }, ref) => {
     return(
         <InputWrapper width={width}>
             <InputLabel>{label}</InputLabel>
             <MyInput
+             ref={ref}
              width={width}
              type={type}
              value={value}
@@ -31,4 +32,6 @@ export default function Input({ type, value, placeholder, label, width, maxLengt
             <ErrorMessage>{errorMsg}</ErrorMessage>
         </InputWrapper>
     )
-}
+})
+
+export default Input
