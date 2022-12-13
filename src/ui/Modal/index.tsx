@@ -16,19 +16,28 @@ export default function Modal() {
     const dateRef = React.createRef<HTMLInputElement>();
     const descriptionRef = React.createRef<HTMLInputElement>();
     
+
     // Inputs
     const [titleErrorMsg, setTitleErrorMsg] = useState<Boolean>();
+
     const handleResetInputValues = () => {
         if(titleRef.current?.value != undefined && dateRef.current?.value != undefined && descriptionRef.current?.value != undefined){
             titleRef.current.value = '';
             dateRef.current.value = '';
             descriptionRef.current.value = '';
         }
+
+        setTitle(titleRef.current?.value)
+        setDate(dateRef.current?.value)
+        setDescription(descriptionRef.current?.value)
+        setPriority(undefined)
     }
 
-    // Open/Close Modal
+
+    // Open and Close Modal
     const { openModal } = useSelector((state: State) => state.modal);
     const { open } = modalSlice.actions;
+
     const handleModal = () => {
         handleResetInputValues()
         dispatch(open())
@@ -42,16 +51,15 @@ export default function Modal() {
     const [description, setDescription] = useState<String>();
     const [priority, setPriority] = useState<String>();
 
-    const { allTasks } = useSelector((state: State) => state.tasks);
     const { addTask } = tasksSlice.actions
 
-    const handleTitle = (e:React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value);
-    const handleDate = (e: React.ChangeEvent<HTMLInputElement>) => setDate(e.target.value);
-    const handleDescription = (e: React.ChangeEvent<HTMLInputElement>) => setDescription(e.target.value);
+    const handleTitle = () => setTitle(titleRef.current?.value);
+    const handleDate = () => setDate(dateRef.current?.value);
+    const handleDescription = () => setDescription(descriptionRef.current?.value);
     const handlePriority = (e: React.ChangeEvent<HTMLInputElement>) => setPriority(e.target.value);
     
     const createTask = () => {
-        if(title){
+        if(title != '' && title != undefined){
             dispatch(addTask({title, date, description, priority}));
             handleModal();
         }else{
@@ -59,7 +67,7 @@ export default function Modal() {
         }
     }
 
-    // store.dispatch(() => console.log(store.getState()))
+    store.dispatch(() => console.log(store.getState()))
 
     return(
         <Backdrop close={openModal}>

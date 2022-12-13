@@ -10,8 +10,6 @@ export default function NewTaskButton() {
     const { open } = modalSlice.actions
     const handleModal = () => dispatch(open()) 
 
-    store.subscribe(() => console.log(store.getState()))
-
     return(
         <Button onClick={handleModal}>+</Button>
     )

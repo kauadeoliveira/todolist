@@ -5,7 +5,7 @@ import calendarPurpleIcon from "../../assets/images/calendar-purple-icon.png"
 
 interface InputProps {
     type?: string;
-    value?: string
+    value?: string | undefined;
     placeholder?: string;
     label: string;
     width: string;
