@@ -14,7 +14,9 @@ export default function Modal() {
 
     // Open/Close Modal
     const { openModal } = useSelector((state: State) => state.modal);
-    const { open } = modalSlice.actions
+    const { open } = modalSlice.actions;
+    const handleModal = () => dispatch(open());
+
 
     // Add tasks
     const [title, setTitle] = useState<String>();
@@ -25,23 +27,14 @@ export default function Modal() {
     const { allTasks } = useSelector((state: State) => state.tasks);
     const { addTask } = tasksSlice.actions
 
-    const handleModal = () => dispatch(open()) 
-
-    const handleCreateTask = () => dispatch(
-        addTask({
-            title: title,
-            date: date,
-            description: description,
-            priority: priority
-        })
-    )
-
     const handleTitle = (e:React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value);
     const handleDate = (e: React.ChangeEvent<HTMLInputElement>) => setDate(e.target.value);
     const handleDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => setDescription(e.target.value);
-    // const handlePriority = (e: React.MouseEvent<HTMLInputElement>) => console.log(e.target.)
-    
-    useEffect(() => console.log(`{title: ${title}, date:${date}, description: ${description}, priority: ${priority}}`), [title, date, description, priority])
+    const handlePriority = (e: React.ChangeEvent<HTMLInputElement>) => setPriority(e.target.value)
+    const createTask = () => dispatch(addTask({title, date, description, priority}))
+
+    // store.dispatch(() => console.log(store.getState()))
+
     return(
         <Backdrop close={openModal}>
             <ModalWrapper>
@@ -70,17 +63,17 @@ export default function Modal() {
                      onChange={handleDescription}
                     />
                     <TaskPriority>
-                        <input type="radio" name="task_priority" id="high" />
+                        <input type="radio" name="task_priority" id="high" value="high" onChange={handlePriority}/>
                         <label htmlFor="high" className="high">High</label>
 
-                        <input type="radio" name="task_priority" id="middle" />
+                        <input type="radio" name="task_priority" id="middle" value="middle" onChange={handlePriority}/>
                         <label htmlFor="middle" className="middle">Middle</label>
 
-                        <input type="radio" name="task_priority" id="low" />
+                        <input type="radio" name="task_priority" id="low" value="low" onChange={handlePriority}/>
                         <label htmlFor="low" className="low">Low</label>
                     </TaskPriority>
                 </ModalContent>
-                <ModalButton>Create Task</ModalButton>
+                <ModalButton onClick={createTask}>Create Task</ModalButton>
             </ModalWrapper>
         </Backdrop>
     )
