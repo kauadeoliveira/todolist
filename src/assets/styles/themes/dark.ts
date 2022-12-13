@@ -26,7 +26,7 @@ export default {
             inputs: '5px',
         },
         margin: {
-            marginLabel: '0px 0px 3px 5px'
+            marginLabel: '3px 5px'
         }
     }
 }

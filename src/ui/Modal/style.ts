@@ -98,7 +98,6 @@ export const TaskPriority = styled.div`
             background-color: #ffb74d;
         }
     }
-
 `
 
 export const ModalButton = styled.div`

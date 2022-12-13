@@ -39,3 +39,9 @@ export const InputLabel = styled.span`
     font-size: 1.1em;
     margin: ${({ theme }) => theme.dimensions.margin.marginLabel}
 `
+
+export const ErrorMessage = styled.span`
+    color: red;
+    font-size: 1.2em;
+    margin: ${({ theme }) => theme.dimensions.margin.marginLabel}
+`
