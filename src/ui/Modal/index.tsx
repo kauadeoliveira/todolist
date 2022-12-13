@@ -5,8 +5,8 @@ import { Backdrop, ModalButton, ModalContent, ModalHeader, ModalWrapper, TaskPri
 import { store } from "../../store/store";
 import { modalSlice } from "../../store/modalSlice";
 import { tasksSlice } from "../../store/tasksSlice";
+import { State } from "../../App";
 
-type State = ReturnType<typeof store.getState>
 
 export default function Modal() {
     const dispatch = useDispatch();

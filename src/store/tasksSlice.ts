@@ -1,15 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface InitialState {
-    allTasks: {
-        title: string;
-        description?: string;
-        priority: 'high' | 'middle' | 'low';
-        completed: boolean;
-    }[]
+export type Tasks = {
+    title: string;
+    description?: string;
+    priority: 'high' | 'middle' | 'low';
+    completed: boolean;
 }
 
-const initialState: InitialState = {
+interface TasksInitialState {
+    allTasks: Tasks[]
+}
+
+const initialState: TasksInitialState = {
     allTasks: []
 }
 
