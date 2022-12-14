@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export type Tasks = {
+export type TaskTypes = {
     title: string;
     description?: string;
     priority: 'high' | 'middle' | 'low';
@@ -8,7 +8,7 @@ export type Tasks = {
 }
 
 interface TasksInitialState {
-    allTasks: Tasks[]
+    allTasks: TaskTypes[]
 }
 
 const initialState: TasksInitialState = {

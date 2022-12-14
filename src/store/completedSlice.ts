@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Tasks } from "./tasksSlice";
+import { TaskTypes } from "./tasksSlice";
 
 interface CompletedInitialState {
-    allCompleted: Tasks[]
+    allCompleted: TaskTypes[]
 }
 
 const initialState: CompletedInitialState = {

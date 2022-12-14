@@ -8,6 +8,8 @@ import NewTaskButton from "./ui/NewTaskButton"
 import { store } from "./store/store"
 import { useSelector } from "react-redux"
 import { useEffect } from "react"
+import Task from "./ui/Task"
+import { ToDoList } from "./style"
 
 export type State = ReturnType<typeof store.getState>
 
@@ -21,13 +23,13 @@ function App() {
     <ThemeProvider theme={dark}> 
       <GlobalStyle />
       <Header />
-      <ul>
+      <ToDoList>
         {allTasks.map(task => {
           return(
-            <li>{task.title}</li>
+            <Task title={task.title} description={task.description} priority={task.priority} completed={task.completed}/>
           )
         })}
-      </ul>
+      </ToDoList>
       <NewTaskButton />
       <Modal />
     </ThemeProvider>
