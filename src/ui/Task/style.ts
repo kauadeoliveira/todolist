@@ -31,3 +31,12 @@ export const TaskPriority = styled.div<PriorityProps>`
     border-top-left-radius: inherit;
     border-bottom-left-radius: inherit;
 `
+
+export const TaskContent = styled.div`
+    width: 100%;
+    height: 100%;
+    div{
+        display: flex;
+        flex-direction: column;
+    }
+`

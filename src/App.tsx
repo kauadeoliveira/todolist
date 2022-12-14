@@ -26,7 +26,7 @@ function App() {
       <ToDoList>
         {allTasks.map(task => {
           return(
-            <Task title={task.title} description={task.description} priority={task.priority} completed={task.completed}/>
+            <Task title={task.title} description={task.description} priority={task.priority} completed={task.completed} date={task.date}/>
           )
         })}
       </ToDoList>
