@@ -1,7 +1,10 @@
+import { Id } from "@reduxjs/toolkit/dist/tsHelpers"
 import { TaskTypes } from "../../store/tasksSlice"
+import CheckTask from "./CheckTask"
 import { TaskContent, TaskPriority, TaskWrapper } from "./style"
 
-export default function Task({ title, priority, completed, date }: TaskTypes) {
+
+export default function Task({ title, priority, completed, date }: Omit<TaskTypes, "id">) {
     return(
         <TaskWrapper>
             <TaskPriority priorityColor={priority}/>
@@ -9,6 +12,7 @@ export default function Task({ title, priority, completed, date }: TaskTypes) {
                 <span className="task-title">{title}</span>
                 <span className="task-date">{date}</span>
             </TaskContent>
+            <CheckTask />
         </TaskWrapper>
     )
 }

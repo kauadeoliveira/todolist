@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export type TaskTypes = {
     title: string;
+    id: number;
     date: string
     priority: 'high' | 'middle' | 'low';
     completed: boolean;

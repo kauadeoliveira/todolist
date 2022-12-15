@@ -47,6 +47,7 @@ export default function Modal() {
     const [title, setTitle] = useState<String>();
     const [date, setDate] = useState<String>();
     const [priority, setPriority] = useState<String>();
+    const [id, setId] = useState<Number>();
 
     const { addTask } = tasksSlice.actions
 
@@ -55,8 +56,10 @@ export default function Modal() {
     const handlePriority = (e: React.ChangeEvent<HTMLInputElement>) => setPriority(e.target.value);
     
     const createTask = () => {
+
         if(title != '' && title != undefined){
-            dispatch(addTask({title, date, priority}));
+            setId(Math.floor(Math.random() * 100))
+            dispatch(addTask({id, title, date, priority}));
             handleModal();
         }else{
             setTitleErrorMsg(true);
@@ -65,6 +68,10 @@ export default function Modal() {
 
     store.dispatch(() => console.log(store.getState()))
 
+
+    useEffect(() => {
+        setId(Math.floor(Math.random() * 100))
+    }, [])
     return(
         <Backdrop close={openModal}>
             <ModalWrapper>
