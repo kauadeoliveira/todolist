@@ -21,15 +21,13 @@ export default function Modal() {
     const [titleErrorMsg, setTitleErrorMsg] = useState<Boolean>();
 
     const handleResetInputValues = () => {
-        if(titleRef.current?.value != undefined && dateRef.current?.value != undefined && descriptionRef.current?.value != undefined){
+        if(titleRef.current?.value != undefined && dateRef.current?.value != undefined){
             titleRef.current.value = '';
             dateRef.current.value = '';
-            descriptionRef.current.value = '';
         }
 
         setTitle(titleRef.current?.value)
         setDate(dateRef.current?.value)
-        setDescription(descriptionRef.current?.value)
         setPriority(undefined)
     }
 
@@ -48,19 +46,17 @@ export default function Modal() {
     // Add tasks
     const [title, setTitle] = useState<String>();
     const [date, setDate] = useState<String>();
-    const [description, setDescription] = useState<String>();
     const [priority, setPriority] = useState<String>();
 
     const { addTask } = tasksSlice.actions
 
     const handleTitle = () => setTitle(titleRef.current?.value);
     const handleDate = () => setDate(dateRef.current?.value);
-    const handleDescription = () => setDescription(descriptionRef.current?.value);
     const handlePriority = (e: React.ChangeEvent<HTMLInputElement>) => setPriority(e.target.value);
     
     const createTask = () => {
         if(title != '' && title != undefined){
-            dispatch(addTask({title, date, description, priority}));
+            dispatch(addTask({title, date, priority}));
             handleModal();
         }else{
             setTitleErrorMsg(true);
@@ -92,15 +88,6 @@ export default function Modal() {
                      width="100%"
                      onChange={handleDate}
                      ref={dateRef}
-                    />
-                    <Input 
-                     type="text"
-                     label="Description"
-                     placeholder="Description"
-                     width="100%"
-                     maxLength={80}
-                     onChange={handleDescription}
-                     ref={descriptionRef}
                     />
                     <TaskPriority>
                         <input type="radio" name="task_priority" id="high" value="high" onChange={handlePriority}/>
