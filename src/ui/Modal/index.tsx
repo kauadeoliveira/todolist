@@ -15,7 +15,7 @@ export default function Modal() {
     const titleRef = React.createRef<HTMLInputElement>();
     const dateRef = React.createRef<HTMLInputElement>();
     const descriptionRef = React.createRef<HTMLInputElement>();
-    
+
 
     // Inputs
     const [titleErrorMsg, setTitleErrorMsg] = useState<Boolean>();
@@ -54,7 +54,7 @@ export default function Modal() {
     const handleTitle = () => setTitle(titleRef.current?.value);
     const handleDate = () => setDate(dateRef.current?.value);
     const handlePriority = (e: React.ChangeEvent<HTMLInputElement>) => setPriority(e.target.value);
-    
+
     const createTask = () => {
 
         if(title != '' && title != undefined){
@@ -66,8 +66,8 @@ export default function Modal() {
         }
     }
 
-    store.dispatch(() => console.log(store.getState()))
 
+    store.dispatch(() => console.log(store.getState()))
 
     useEffect(() => {
         setId(Math.floor(Math.random() * 100))
@@ -98,13 +98,11 @@ export default function Modal() {
                     />
                     <TaskPriority>
                         <input type="radio" name="task_priority" id="high" value="high" onChange={handlePriority}/>
-                        <label htmlFor="high" className="high">High</label>
-
+                        <label htmlFor="high" className="high">High priority</label>
                         <input type="radio" name="task_priority" id="middle" value="middle" onChange={handlePriority}/>
-                        <label htmlFor="middle" className="middle">Middle</label>
-
+                        <label htmlFor="middle" className="middle">Middle priority</label>
                         <input type="radio" name="task_priority" id="low" value="low" onChange={handlePriority}/>
-                        <label htmlFor="low" className="low">Low</label>
+                        <label htmlFor="low" className="low">Low priority</label>
                     </TaskPriority>
                 </ModalContent>
                 <ModalButton onClick={createTask}>Create Task</ModalButton>

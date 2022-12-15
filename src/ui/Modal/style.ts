@@ -67,20 +67,25 @@ export const TaskPriority = styled.div`
         border-radius: ${({ theme }) => theme.dimensions.borderRadius.inputs};
         display: block;
         cursor: pointer;
-        padding: 5px;
-        width: 80px;
+        padding: 8px 0px;
+        width: 100px;
         text-align: center;
-        font-size: 1.4em;
+        font-size: 1.2em;
         font-weight: bold;
         transition: all .4s;
     }
-    
+
+
     .high{
         background-color: ${({ theme }) => theme.palette.colors.priority.high};
 
         &:hover{
             background-color: #e57373;
         }
+    }
+
+    #high:checked + .high{
+        background-color: #e57373;
     }
     
     .middle{
@@ -91,12 +96,20 @@ export const TaskPriority = styled.div`
         }
     }
 
+    #middle:checked + .middle{
+        background-color: #81c784;
+    }
+
     .low{
         background-color: ${({ theme }) => theme.palette.colors.priority.low};
 
         &:hover{
             background-color: #ffb74d;
         }
+    }
+
+    #low:checked + .low{
+        background-color:#ffb74d ;
     }
 `
 

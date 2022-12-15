@@ -7,9 +7,9 @@ export default {
             secondary: '#352833',
 
             priority: {
-                high: '#f44336',
-                middle: '#66bb6a',
-                low: '#ffa726'
+                high: '#d32f2f',
+                middle: '#388e3c',
+                low: '#f57c00'
             }
         },
         background: {
