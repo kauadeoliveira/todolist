@@ -4,7 +4,7 @@ import CheckTask from "./CheckTask"
 import { TaskContent, TaskPriority, TaskWrapper } from "./style"
 
 
-export default function Task({ title, priority, completed, date }: Omit<TaskTypes, "id">) {
+export default function Task({ title, priority, completed, date, id }: TaskTypes) {
     return(
         <TaskWrapper>
             <TaskPriority priorityColor={priority}/>
@@ -12,7 +12,7 @@ export default function Task({ title, priority, completed, date }: Omit<TaskType
                 <span className="task-title">{title}</span>
                 <span className="task-date">{date}</span>
             </TaskContent>
-            <CheckTask />
+            <CheckTask id={id.toString()}/>
         </TaskWrapper>
     )
 }

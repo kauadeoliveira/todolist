@@ -9,8 +9,8 @@ export default function CheckTask({ id }: CheckTaskProps) {
     const teste = (e: React.ChangeEvent<HTMLInputElement>) => console.log(e.target.value) 
     return(
         <CheckTaskWrapper checkIcon={check}>
-                <input type="checkbox" onChange={teste} id="teste"/>
-                <label htmlFor="teste"></label>
+                <input type="checkbox" onChange={teste} id={id}/>
+                <label htmlFor={id}></label>
         </CheckTaskWrapper>
     )
 }
