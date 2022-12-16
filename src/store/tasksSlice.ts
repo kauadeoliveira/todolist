@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export type TaskTypes = {
+export interface TaskTypes{
     title: string;
     id: number;
     date: string
@@ -9,11 +9,11 @@ export type TaskTypes = {
 }
 
 interface TasksInitialState {
-    allTasks: TaskTypes[]
+    [task: string]: TaskTypes[]
 }
 
 const initialState: TasksInitialState = {
-    allTasks: []
+    incompleteTasks: []
 }
 
 export const tasksSlice = createSlice({
@@ -21,7 +21,11 @@ export const tasksSlice = createSlice({
     initialState,
     reducers: {
         addTask: (state, action) => {
-            state.allTasks.push(action.payload)
+            state.incompleteTasks.push(action.payload)
+        },
+        removeTask: (state, action) => {
+            const removeCompleted = state.incompleteTasks.filter(task => task.id === action.payload ? false : true);
+            state.incompleteTasks = removeCompleted 
         }
     }
 })

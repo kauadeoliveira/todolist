@@ -15,16 +15,16 @@ export type State = ReturnType<typeof store.getState>
 
 
 function App() {
-  const { allTasks } = useSelector((state: State ) => state.tasks)
+  const { incompleteTasks } = useSelector((state: State ) => state.tasks)
 
-  useEffect(() => console.log(allTasks), [])
+  useEffect(() => console.log(incompleteTasks), [])
   return (
     <>
     <ThemeProvider theme={dark}> 
       <GlobalStyle />
       <Header />
       <ToDoList>
-        {allTasks.map(task => {
+        {incompleteTasks.map(task => {
           return(
             <Task title={task.title} priority={task.priority} completed={task.completed} date={task.date} key={task.id} id={task.id}/>
           )
