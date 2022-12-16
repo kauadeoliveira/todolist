@@ -5,7 +5,10 @@ declare module 'styled-components' {
         title: string;
         palette: {
             colors: {
-                primary: string;
+                primary: {
+                    light: string;
+                    main: string
+                }
                 secondary: string;
 
                 priority: {

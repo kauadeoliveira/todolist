@@ -6,6 +6,7 @@ interface PriorityProps {
 
 export const TaskWrapper = styled.div`
     display: flex;
+    align-items: center;
     background-color: ${({ theme }) => theme.palette.background.secondary};
     width: 100%;
     height: 40px;

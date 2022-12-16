@@ -115,7 +115,7 @@ export const TaskPriority = styled.div`
 
 export const ModalButton = styled.div`
     border-radius: ${({ theme }) => theme.dimensions.borderRadius.inputs};
-    background-color: ${({ theme }) => theme.palette.colors.primary};
+    background-color: ${({ theme }) => theme.palette.colors.primary.main};
     font-size: 1.8em;
     font-weight: bold;
     padding: 10px;
@@ -125,7 +125,7 @@ export const ModalButton = styled.div`
     cursor: pointer;
 
     &:hover{
-        background-color: #a883ff;
+        background-color: ${({ theme }) => theme.palette.colors.primary.light};
     }
 `
 

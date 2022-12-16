@@ -3,7 +3,10 @@ export default {
 
     palette: {
         colors: {
-            primary: '#8257e6',
+            primary: {
+                light: '#a883ff',
+                main: '#8257e6'
+            },
             secondary: '#352833',
 
             priority: {
