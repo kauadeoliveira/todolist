@@ -12,6 +12,7 @@ export const TaskWrapper = styled.div`
     height: 40px;
     border-radius: 5px;
     cursor: default;
+    padding-right: 5px;
 `
 
 export const TaskPriority = styled.div<PriorityProps>`
