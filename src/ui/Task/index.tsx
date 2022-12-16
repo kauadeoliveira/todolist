@@ -14,7 +14,7 @@ export default function Task({ title, priority, completed, date, id }: TaskTypes
         const day: number = taskDate[2];
         const format = `${dateArray[2]}/${dateArray[1]}/${dateArray[0]}`
         const dayName = new Date(year, month, day).toString().split(' ')[0]
-        return `${dayName} * ${format}`
+        return `${dayName} • ${format}`
     } 
 
     return(

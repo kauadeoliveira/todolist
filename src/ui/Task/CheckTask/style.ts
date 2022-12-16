@@ -11,6 +11,12 @@ export const CheckTaskWrapper = styled.div<CheckTaskProps>`
         width: 20px;
         height: 20px;
         justify-content: center;
+        cursor: pointer;
+        transition: .3s;
+
+        &:hover{
+            background-color: rgb(255 255 255 / 84%);
+        }
     }
 
     input{

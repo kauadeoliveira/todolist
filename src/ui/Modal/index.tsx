@@ -16,6 +16,11 @@ export default function Modal() {
     const dateRef = React.createRef<HTMLInputElement>();
     const descriptionRef = React.createRef<HTMLInputElement>();
 
+    const highRef = React.createRef<HTMLInputElement>();
+    const middleRef = React.createRef<HTMLInputElement>();
+    const lowRef = React.createRef<HTMLInputElement>();
+
+
 
     // Inputs
     const [titleErrorMsg, setTitleErrorMsg] = useState<Boolean>();
@@ -40,6 +45,18 @@ export default function Modal() {
         handleResetInputValues()
         dispatch(open())
         setTitleErrorMsg(false)
+
+        if(highRef.current?.checked){
+            highRef.current.checked = false;
+        }
+
+        if(middleRef.current?.checked){
+            middleRef.current.checked = false;
+        }
+
+        if(lowRef.current?.checked){
+            lowRef.current.checked = false;
+        }
     };
 
 
@@ -88,6 +105,7 @@ export default function Modal() {
                      onChange={handleTitle}
                      errorMsg={titleErrorMsg ? 'Title task is required.' : ''}
                      ref={titleRef}
+                     maxLength={60}
                     />
                     <Input 
                      type="date"
@@ -97,11 +115,11 @@ export default function Modal() {
                      ref={dateRef}
                     />
                     <TaskPriority>
-                        <input type="radio" name="task_priority" id="high" value="high" onChange={handlePriority}/>
+                        <input type="radio" name="task_priority" id="high" value="high" onChange={handlePriority} ref={highRef}/>
                         <label htmlFor="high" className="high">High priority</label>
-                        <input type="radio" name="task_priority" id="middle" value="middle" onChange={handlePriority}/>
+                        <input type="radio" name="task_priority" id="middle" value="middle" onChange={handlePriority} ref={middleRef}/>
                         <label htmlFor="middle" className="middle">Middle priority</label>
-                        <input type="radio" name="task_priority" id="low" value="low" onChange={handlePriority}/>
+                        <input type="radio" name="task_priority" id="low" value="low" onChange={handlePriority} ref={lowRef}/>
                         <label htmlFor="low" className="low">Low priority</label>
                     </TaskPriority>
                 </ModalContent>
