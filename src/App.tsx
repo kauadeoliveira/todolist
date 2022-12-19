@@ -10,13 +10,14 @@ import { useSelector } from "react-redux"
 import { useEffect } from "react"
 import Task from "./ui/Task"
 import { ToDoList } from "./style"
+import TaskCompleted from "./ui/TaskCompleted"
 
 export type State = ReturnType<typeof store.getState>
 
 
 function App() {
-  const { incompleteTasks } = useSelector((state: State ) => state.tasks)
-
+  const { incompleteTasks } = useSelector((state: State) => state.tasks)
+  const { completedTasks } = useSelector((state: State) => state.tasks)
   useEffect(() => console.log(incompleteTasks), [])
   return (
     <>
@@ -27,6 +28,13 @@ function App() {
         {incompleteTasks.map(task => {
           return(
             <Task title={task.title} priority={task.priority} completed={task.completed} date={task.date} key={task.id} id={task.id}/>
+          )
+        })}
+      </ToDoList>
+      <ToDoList>
+        {completedTasks.map(task => {
+          return(
+            <TaskCompleted title={task.title} priority={task.priority} completed={task.completed} date={task.date} key={task.id} id={task.id}/>
           )
         })}
       </ToDoList>

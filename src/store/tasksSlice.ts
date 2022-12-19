@@ -13,7 +13,8 @@ interface TasksInitialState {
 }
 
 const initialState: TasksInitialState = {
-    incompleteTasks: []
+    incompleteTasks: [],
+    completedTasks: []
 }
 
 export const tasksSlice = createSlice({
@@ -25,6 +26,7 @@ export const tasksSlice = createSlice({
         },
         removeTask: (state, action) => {
             const removeCompleted = state.incompleteTasks.filter(task => task.id === action.payload ? false : true);
+            const addCompleted = state.incompleteTasks.map(task => task.id === action.payload ? state.completedTasks.push(task) : false)
             state.incompleteTasks = removeCompleted 
         }
     }

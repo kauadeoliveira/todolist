@@ -18,7 +18,7 @@ interface AllTasksExample {
 export default function CheckTask({ id }: CheckTaskProps) {
     const { removeTask } = tasksSlice.actions;
     const dispatch = useDispatch();
-    const teste = (e: React.ChangeEvent<HTMLInputElement>) => e.target.value === 'on' ? dispatch(removeTask(id)) : false;
+    const teste = (e: React.ChangeEvent<HTMLInputElement>) => e.target.checked ? dispatch(removeTask(id)) : false;
 
     // function removeTask(id: number) {
     //     const arrayTasks = [
