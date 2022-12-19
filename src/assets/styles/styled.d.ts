@@ -15,7 +15,13 @@ declare module 'styled-components' {
                     high: string,
                     middle: string,
                     low: string
-                }
+                },
+
+                taskCompleted: {
+                    light: string;
+                    main: string;
+                    dark: string;
+                },
             },
             background: {
                 primary: string;

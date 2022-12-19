@@ -2,11 +2,11 @@ import { Id } from "@reduxjs/toolkit/dist/tsHelpers"
 import { useEffect } from "react"
 import { TaskTypes } from "../../store/tasksSlice"
 import { formatDate } from "../../utils/formatDate"
-import CheckTask from "./CheckTask"
+import CheckTask from "../CheckTask"
 import { TaskContent, TaskPriority, TaskWrapper } from "./style"
 
 
-export default function Task({ title, priority, date, id }: TaskTypes) {
+export default function Task({ title, priority, date, id, completed }: TaskTypes) {
     return(
         <TaskWrapper>
             <TaskPriority priorityColor={priority}/>
@@ -14,7 +14,7 @@ export default function Task({ title, priority, date, id }: TaskTypes) {
                 <span className="task-title">{title}</span>
                 <span className="task-date">{formatDate(date)}</span>
             </TaskContent>
-            <CheckTask id={id}/>
+            <CheckTask id={id} completed={completed}/>
         </TaskWrapper>
     )
 }

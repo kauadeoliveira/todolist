@@ -20,7 +20,7 @@ export const CheckTaskWrapper = styled.div<CheckTaskProps>`
     }
 
     input{
-        display: none;
+        /* display: none; */
         height: 100%;
         width: 100%;
     }

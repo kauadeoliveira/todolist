@@ -14,7 +14,7 @@ interface TasksInitialState {
 
 const initialState: TasksInitialState = {
     incompleteTasks: [],
-    completedTasks: []
+    completeTasks: []
 }
 
 export const tasksSlice = createSlice({
@@ -22,12 +22,27 @@ export const tasksSlice = createSlice({
     initialState,
     reducers: {
         addTask: (state, action) => {
-            state.incompleteTasks.push(action.payload)
+            state.incompleteTasks.push(action.payload);
         },
-        removeTask: (state, action) => {
-            const removeCompleted = state.incompleteTasks.filter(task => task.id === action.payload ? false : true);
-            const addCompleted = state.incompleteTasks.map(task => task.id === action.payload ? state.completedTasks.push(task) : false)
-            state.incompleteTasks = removeCompleted 
+        completeTask: (state, action) => {
+            const completeState = state.incompleteTasks.map(task => {
+                if(task.id === action.payload){
+                    state.completeTasks.push({...task, completed: true})
+                }
+            })
+            
+            const removeCompleteTask = state.incompleteTasks.filter(task => task.id === action.payload ? false : true);
+            state.incompleteTasks = removeCompleteTask; 
+        },
+        incompleteTask: (state, action) => {
+            const incompleteState = state.completeTasks.map(task => {
+                if(task.id === action.payload){
+                    state.incompleteTasks.push({...task, completed: false})
+                }
+            }) 
+
+            const removeIncompleteTask = state.completeTasks.filter(task => task.id === action.payload ? false : true);
+            state.completeTasks = removeIncompleteTask; 
         }
     }
 })

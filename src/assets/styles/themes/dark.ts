@@ -13,7 +13,13 @@ export default {
                 high: '#d32f2f',
                 middle: '#388e3c',
                 low: '#f57c00'
-            }
+            },
+
+            taskCompleted: {
+                light: '#747479',
+                main: '#414145',
+                dark: '#202024',
+            },
         },
         background: {
             primary: '#202024',

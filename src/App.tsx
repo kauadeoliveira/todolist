@@ -17,7 +17,7 @@ export type State = ReturnType<typeof store.getState>
 
 function App() {
   const { incompleteTasks } = useSelector((state: State) => state.tasks)
-  const { completedTasks } = useSelector((state: State) => state.tasks)
+  const { completeTasks } = useSelector((state: State) => state.tasks)
   useEffect(() => console.log(incompleteTasks), [])
   return (
     <>
@@ -32,7 +32,7 @@ function App() {
         })}
       </ToDoList>
       <ToDoList>
-        {completedTasks.map(task => {
+        {completeTasks.map(task => {
           return(
             <TaskCompleted title={task.title} priority={task.priority} completed={task.completed} date={task.date} key={task.id} id={task.id}/>
           )

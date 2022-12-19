@@ -65,6 +65,7 @@ export default function Modal() {
     const [date, setDate] = useState<String>();
     const [priority, setPriority] = useState<String>();
     const [id, setId] = useState<Number>();
+    const [completed, setCompleted] = useState<boolean>(false);
 
     const { addTask } = tasksSlice.actions
 
@@ -76,7 +77,7 @@ export default function Modal() {
 
         if(title != '' && title != undefined){
             setId(Math.floor(Math.random() * 100))
-            dispatch(addTask({id, title, date, priority}));
+            dispatch(addTask({id, title, date, priority, completed}));
             handleModal();
         }else{
             setTitleErrorMsg(true);
